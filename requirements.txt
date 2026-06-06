@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────────
+# AI Meeting Assistant — requirements.txt
+# ─────────────────────────────────────────────
+
+# ── Audio / YouTube ingestion ────────────────
+yt-dlp>=2024.3.10               # Download audio from YouTube URLs
+pydub>=0.25.1                   # Audio file manipulation & conversion
+ffmpeg-python>=0.2.0            # FFmpeg bindings (ffmpeg binary required separately)
+
+# ── Speech-to-Text (local Whisper) ───────────
+openai-whisper>=20231117        # OpenAI Whisper for local transcription
+torch>=2.2.0                    # PyTorch backend for Whisper
+torchaudio>=2.2.0               # Audio utilities for torch
+
+# ── Translation (Hindi → English) ────────────
+deep-translator>=1.11.4         # Hindi-to-English translation (Google Translate backend)
+langdetect>=1.0.9               # Detect language of transcription
+
+# ── LLM / LangChain LCEL + Mistral ───────────
+langchain>=0.2.0                # LangChain core (LCEL)
+langchain-core>=0.2.0           # LCEL primitives (Runnable, prompts, parsers)
+langchain-community>=0.2.0      # Community integrations (Mistral, HuggingFace, Chroma)
+langchain-mistralai>=0.1.0      # First-party Mistral integration for LangChain
+mistralai>=0.4.0                # Mistral AI SDK (free-tier compatible)
+
+# ── RAG Pipeline ─────────────────────────────
+chromadb>=0.5.0                 # Vector store for transcript embeddings
+sentence-transformers>=3.0.0    # HuggingFace embedding models (e.g. all-MiniLM-L6-v2)
+langchain-huggingface>=0.0.3    # HuggingFace embeddings wrapper for LangChain
+huggingface-hub>=0.23.0         # Model downloads from HuggingFace Hub
+tiktoken>=0.7.0                 # Token counting for text splitting
+
+# ── Text splitting & document loading ────────
+unstructured>=0.14.0            # Document loading utilities
+nltk>=3.8.1                     # Sentence tokenization for chunking
+
+# ── Streamlit UI ─────────────────────────────
+streamlit>=1.35.0               # Web UI framework
+streamlit-extras>=0.4.2         # Additional Streamlit components
+watchdog>=4.0.0                 # File system watcher (improves Streamlit hot-reload)
+
+# ── PDF & TXT export ─────────────────────────
+fpdf2>=2.7.9                    # Generate PDF export of results
+reportlab>=4.2.0                # Alternative PDF generation (richer formatting)
+
+# ── Utilities ────────────────────────────────
+python-dotenv>=1.0.1            # Load .env API keys (MISTRAL_API_KEY, etc.)
+requests>=2.32.0                # HTTP requests
+numpy>=1.26.0                   # Numerical ops (Whisper / embeddings dependency)
+tqdm>=4.66.0                    # Progress bars for long transcription jobs
+tenacity>=8.3.0                 # Retry logic for API calls 
